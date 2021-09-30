@@ -17,32 +17,49 @@
 <body>
 
     <Header>
-        <h1 id="logo">Dev.Finance$</h1>
+        <img src="./assets/assets/logo.svg" alt="Logo Dev Finance">
     </Header>
 
     <main class="container">
 
         <section id="balance">
-            <h2>Balanço</h2>
+            <h2 class="sr-only">Balanço</h2>
 
             <div class="card">
-                <h3>Entradas</h3>
+                <h3>
+                    <span>
+                        Entradas
+                    </span>
+                    <img src="./assets/assets/income.svg" alt="Imagem de Entradas">
+                </h3>
                 <p>R$ 5.000,00</p>
             </div>
 
             <div class="card">
-                <h3>Saidas</h3>
+                <h3>
+                    <span>
+                        Saidas
+                    </span>
+                    <img src="./assets/assets/expense.svg" alt="Imagem de Saida">
+                </h3>
                 <p>R$ 2.000,00</p>
             </div>
             <div class="card total">
-                <h3>Total</h3>
+                <h3>
+                    <span>
+                        Total
+                    </span>
+                    <img src="./assets/assets/total.svg" alt="Imagem do Total">
+                </h3>
                 <p>R$ 3.000,00</p>
             </div>
 
         </section>
 
         <section id="Transaction">
-            <h2>Transaçoes</h2>
+            <h2 class="sr-only">Transaçoes</h2>
+
+            <a href="#" onclick="modal.open()" class="buttonnew">+ nova transaçao</a>
 
             <table id="data-table">
                 <thead>
@@ -50,6 +67,7 @@
                         <th>Descriçao</th>
                         <th>Valor</th>
                         <th>Data</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,16 +75,25 @@
                         <td class="description">Luz</td>
                         <td class="expense">- R$ 500,00</td>
                         <td class="date">17/01/2021</td>
+                        <th>
+                            <img src="./assets/assets/minus.svg" alt="Remover transaçao">
+                        </th>
                     </tr>
                     <tr>
                         <td class="description">criaçao website</td>
                         <td class="income">R$ 2.000,00</td>
                         <td class="date">30/02/2021</td>
+                        <th>
+                            <img src="./assets/assets/minus.svg" alt="Remover transaçao">
+                        </th>
                     </tr>
                     <tr>
                         <td class="description">Internet</td>
                         <td class="expense">- R$ 200,00</td>
                         <td class="date">22/03/2021</td>
+                        <th>
+                            <img src="./assets/assets/minus.svg" alt="Remover transaçao">
+                        </th>
                     </tr>
                 </tbody>
             </table>
@@ -74,9 +101,55 @@
     </main>
 
     <footer>
-        <p>Dev.Finance$</p>
+        <p>2021 - Dev.Finance$</p>
     </footer>
 
-</body>
+    <div class="modal-overlay">
+        <div class="modal">
+            <div id="form">
+                <h2>nova transaçao</h2>
+                <form action="">
+                    <div class="input-group">
+                        <label class="sr-only" for="description">Descriçao</label>
+                        <input type="text" id="description" name="description" placeholder="descriçao">
+                    </div>
+                    <div class="input-group">
+                        <label class="sr-only" for="amount">Valor</label>
+                        <input type="number" id="amount" step="0.01" name="amount" placeholder="0.00">
+                        <small>Use o sinal - (Negativo) para despesas e , (virgula) para casas decimais</small>
+                    <div class="input-group">
+                        <label class="sr-only" for="date">Data</label>
+                        <input type="date" id="date" name="date">
+                    </div>
 
+                    <div class="input-group actions">
+                        <a href="#" onclick="modal.close()" class="buttoncancel">Cancelar</a>
+                        <button class="button">Salvar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        const modal = {
+            open(){
+                //abrir modal
+                //adicionar a class active ao modal
+                document
+                    .querySelector('.modal-overlay')
+                    .classList
+                    .add('active')
+            },
+            close(){
+                //fechar modal
+                //remover a class active do modal
+                document
+                    .querySelector('.modal-overlay')
+                    .classList
+                    .remove('active')
+            }
+        }
+    </script>
+</body>
 </html>
